@@ -5,8 +5,13 @@ from sqlalchemy.orm import sessionmaker
 
 # Database URL configured via environment variables
 DATABASE_URL = os.getenv(
-    "DATABASE_URL", "postgresql://Krishna-Singh:dishpass@localhost:5432/dishboard"
+    "DATABASE_URL", "postgresql+psycopg://Krishna-Singh:dishpass@localhost:5432/dishboard"
 )
+
+# SQLAlchemy 2.0 defaults postgresql:// to psycopg2.
+# We map it to use psycopg (v3) which is installed in the requirements.
+if DATABASE_URL.startswith("postgresql://"):
+    DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+psycopg://", 1)
 
 # Create engine for synchronous PostgreSQL interaction
 engine = create_engine(DATABASE_URL)
