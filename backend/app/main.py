@@ -30,8 +30,13 @@ async def postgres_listener():
     """Background loop that connects to Postgres and listens for table updates."""
     while True:
         try:
+            # asyncpg requires a standard postgresql:// or postgres:// scheme
+            clean_url = DATABASE_URL
+            if clean_url.startswith("postgresql+psycopg://"):
+                clean_url = clean_url.replace("postgresql+psycopg://", "postgresql://", 1)
+            
             # Establish direct async connection for LISTEN/NOTIFY
-            conn = await asyncpg.connect(DATABASE_URL)
+            conn = await asyncpg.connect(clean_url)
             
             def handle_notification(connection, pid, channel, payload):
                 # Process notification in a non-blocking background task
