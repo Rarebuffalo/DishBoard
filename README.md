@@ -2,8 +2,6 @@
 
 A full-stack, real-time management dashboard designed to synchronize menu visibility states ("dishes") across restaurant interfaces. The application leverages a database-first event pipeline: changes made to the PostgreSQL database (either via the admin dashboard or directly in a SQL client) trigger immediate, low-latency UI updates in all open client browsers via FastAPI WebSockets.
 
-<video src="docs/demo.mp4" width="100%" controls muted></video>
-
 ---
 
 ## Technical Architecture & Core Logic
@@ -141,3 +139,11 @@ We have included a startup script `start-db.sh` that initializes and executes a 
    UPDATE dishes SET is_published = false WHERE dish_name = 'Margherita Pizza';
    ```
 4. Verify that the Margherita Pizza card immediately slides back into the **Unpublished** state and the published count updates to reflect the database state in real-time.
+
+---
+
+## Demo Video
+
+The recorded video showing real-time dashboard-to-dashboard and database-to-dashboard synchronization:
+
+<video src="docs/demo.mp4" width="100%" controls muted></video>
