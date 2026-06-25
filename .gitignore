@@ -28,6 +28,9 @@ pip-delete-this-directory.txt
 *.log
 db_data/
 
+# Local PostgreSQL data directory (created for local dev, not needed in repo)
+pgdata/
+
 # Environment configurations
 .env
 .env.local
