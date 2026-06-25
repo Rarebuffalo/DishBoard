@@ -144,6 +144,5 @@ We have included a startup script `start-db.sh` that initializes and executes a 
 
 ## Demo Video
 
-The recorded video showing real-time dashboard-to-dashboard and database-to-dashboard synchronization:
-
-<video src="docs/demo.mp4" width="100%" controls muted></video>
+The recorded video showing real-time dashboard-to-dashboard and database-to-dashboard synchronization can be viewed here:
+👉 **[Watch the Demo Video on Google Drive](https://drive.google.com/file/d/1l2ezVEnUgEJ-w6M6zVeGvQxgXQPXHgm1/view?usp=sharing)**
