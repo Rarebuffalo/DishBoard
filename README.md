@@ -2,6 +2,8 @@
 
 A full-stack application designed to manage dish publishing states with real-time updates. The system uses a PostgreSQL database trigger to notify the FastAPI backend of changes, which then broadcasts those updates to the React dashboard over WebSockets.
 
+<video src="docs/demo.mp4" width="100%" controls muted></video>
+
 Detailed documentation on the event flow, triggers, and components is available in the [ARCHITECTURE.md](file:///home/Krishna-Singh/DishBoard/ARCHITECTURE.md) document.
 
 ---
