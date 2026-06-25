@@ -9,7 +9,7 @@ A full-stack, real-time management dashboard designed to synchronize menu visibi
 ## Technical Architecture & Core Logic
 
 A detailed breakdown of the components, database triggers, connection managers, and React hooks is available in:
-👉 **[documentation/ARCHITECTURE.md](file:///home/Krishna-Singh/DishBoard/documentation/ARCHITECTURE.md)**
+**[documentation/ARCHITECTURE.md](file:///home/Krishna-Singh/DishBoard/documentation/ARCHITECTURE.md)**
 
 ### Core Event Flow
 1. **Mutation**: A dish is toggled in the React UI (`PATCH` endpoint) or modified directly inside database CLI (`psql`).
