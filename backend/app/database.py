@@ -4,7 +4,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 # Manually load .env file if it exists (avoids extra dependencies in scripts)
-for env_path in [".env", "../.env", "backend/.env"]:
+for env_path in [".env", "../backend/.env", "backend/.env"]:
     if os.path.exists(env_path):
         with open(env_path) as f:
             for line in f:
@@ -15,13 +15,14 @@ for env_path in [".env", "../.env", "backend/.env"]:
         break
 
 # Database URL configured via environment variables
+# Default uses Unix socket path for local dev (TCP blocked in sandbox)
 DATABASE_URL = os.getenv(
-    "DATABASE_URL", "postgresql+psycopg://Krishna-Singh:dishpass@localhost:5432/dishboard"
+    "DATABASE_URL",
+    "postgresql+psycopg://myuser:mypassword@/dishboard?host=/home/Krishna-Singh/DishBoard/pgdata/run&port=5433"
 )
 
-# SQLAlchemy 2.0 defaults postgresql:// to psycopg2.
-# We map it to use psycopg (v3) which is installed in the requirements.
-if DATABASE_URL.startswith("postgresql://"):
+# SQLAlchemy 2.0: ensure we use psycopg (v3) driver
+if DATABASE_URL.startswith("postgresql://") and "+psycopg" not in DATABASE_URL:
     DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+psycopg://", 1)
 
 # Create engine for synchronous PostgreSQL interaction
